@@ -1,0 +1,25 @@
+#
+
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/plain');
+        res.end('Hello World');
+    } else if (req.url === '/myname') {
+        const name = 'NAME'; // Reemplaza NAME con tu nombre real
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/plain');
+        res.end(`Hello World! My name is ${name}`);
+    } else {
+        res.statusCode = 404;
+        res.setHeader('Content-Type', 'text/plain');
+        res.end('Not Found');
+    }
+});
+
+const PORT = 3500;
+server.listen(PORT, () => {
+    console.log(`Server on port ${PORT}`);
+});
